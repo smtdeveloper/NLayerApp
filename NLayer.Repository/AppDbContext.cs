@@ -1,12 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NLayer.Core;
-using NLayer.Repository.Configurations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NLayer.Repository
 {
@@ -31,6 +25,13 @@ namespace NLayer.Repository
             //modelBuilder.ApplyConfiguration(new ProductConfiguration());
             //modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             //modelBuilder.ApplyConfiguration(new ProductFeatureConfigyration());
+
+            // örnek Seed Data 
+            modelBuilder.Entity<ProductFeature>().HasData(
+                new ProductFeature {Id =1 ,Color = "Kırmızı" ,Height = 100 , Width = 180 ,ProductId = 1 },
+                new ProductFeature {Id =2 ,Color = "Mavi" ,Height = 80 , Width = 120 ,ProductId = 2 }
+                );
+
 
             base.OnModelCreating(modelBuilder);
         }
