@@ -57,7 +57,7 @@ namespace NLayer.Service.Services
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task Updatec(T entity)
+        public async Task UpdateAsync(T entity)
         {
            _repository.Update(entity);
             await _unitOfWork.CommitAsync();    
