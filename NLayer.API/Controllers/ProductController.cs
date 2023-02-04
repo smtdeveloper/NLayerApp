@@ -11,12 +11,11 @@ namespace NLayer.API.Controllers
     public class ProductController : CustomBaseController
     {
         private readonly IMapper _mapper;
-        private readonly IService<Product> _service;
         private readonly IProductService _productService;
 
-        public ProductController(IService<Product> service, IMapper mapper, IProductService productService)
+        public ProductController(IMapper mapper, IProductService productService)
         {
-            _service = service;
+            
             _mapper = mapper;
             _productService = productService;
         }
@@ -32,7 +31,7 @@ namespace NLayer.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var products = await _service.GetAllAsync();
+            var products = await _productService.GetAllAsync();
 
             var productDtos = _mapper.Map<List<ProductDto>>(products).ToList();
 
@@ -45,7 +44,7 @@ namespace NLayer.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var product = await _service.GetByIdAsync(id);
+            var product = await _productService.GetByIdAsync(id);
             var productDto = _mapper.Map<ProductDto>(product);
             return CreateActionResult(CustomResponseDto<ProductDto>.Success(200, productDto));
 
@@ -56,7 +55,7 @@ namespace NLayer.API.Controllers
         {
             var entity = _mapper.Map<Product>(productDto);
 
-            var product = await _service.AddAsync(entity);
+            var product = await _productService.AddAsync(entity);
 
             var newDto = _mapper.Map<ProductDto>(product);
 
@@ -68,7 +67,7 @@ namespace NLayer.API.Controllers
         public async Task<IActionResult> Update(ProductUpdateDto productUpdateDto)
         {
             var entity = _mapper.Map<Product>(productUpdateDto);
-            await _service.UpdateAsync(entity);
+            await _productService.UpdateAsync(entity);
 
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
 
@@ -77,14 +76,14 @@ namespace NLayer.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
         {
-            var deletedProduct = await _service.GetByIdAsync(id);
+            var deletedProduct = await _productService.GetByIdAsync(id);
 
             if (deletedProduct == null)
             {
                 return CreateActionResult(CustomResponseDto<NoContentDto>.Fail(404, "Product not found! "));
             }
 
-            await _service.RemoveAsync(deletedProduct);
+            await _productService.RemoveAsync(deletedProduct);
 
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
 
