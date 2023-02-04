@@ -7,8 +7,7 @@ using NLayer.Core.Services;
 
 namespace NLayer.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    
     public class CategoryController : CustomBaseController
     {
         private readonly IMapper _mapper;
@@ -20,13 +19,20 @@ namespace NLayer.API.Controllers
             _mapper = mapper;
         }
 
+
+        [HttpGet("GetCategoryByIdWithProducts")]
+        public async Task<IActionResult> GetCategoryByIdWithProducts(int categoryId)
+        {
+            return CreateActionResult(await _categroryService.GetCategoryByIdWithProducts(categoryId));
+        }
+
         [HttpGet("GetCategoryWithProducts")]
         public async Task<IActionResult> GetCategoryWithProducts()
         {
             return CreateActionResult(await _categroryService.GetCategoryWithProducts());
         }
 
-        [HttpGet]
+        [HttpGet("getall")]
         public async Task<IActionResult> GetAll()
         {
             var Categories = await _categroryService.GetAllAsync();
