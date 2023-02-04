@@ -19,13 +19,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//UnitOfWork
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+// Generic
 builder.Services.AddScoped(typeof(IGenericRepository<>) ,typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IService<>) ,typeof(Service<>));
 
+//Product
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
- 
+
+//Category
+builder.Services.AddScoped<ICategoryRespository, CategoryRepository>();
+builder.Services.AddScoped<ICategroryService, CategoryService>();
+
 
 builder.Services.AddAutoMapper(typeof(ProductProfile), typeof(CategoryProfile), typeof(ProductFeatureProfile));
 
