@@ -6,6 +6,7 @@ using NLayer.Core.DTOs;
 using NLayer.Core.DTOs.GenericDTO;
 using NLayer.Core.Models;
 using NLayer.Core.Services;
+using NLayer.Service.Exceptions;
 
 namespace NLayer.API.Controllers
 {
@@ -48,6 +49,7 @@ namespace NLayer.API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var product = await _productService.GetByIdAsync(id);
+
             var productDto = _mapper.Map<ProductDto>(product);
             return CreateActionResult(CustomResponseDto<ProductDto>.Success(200, productDto));
 
@@ -81,10 +83,11 @@ namespace NLayer.API.Controllers
         {
             var deletedProduct = await _productService.GetByIdAsync(id);
 
-            if (deletedProduct == null)
-            {
-                return CreateActionResult(CustomResponseDto<NoContentDto>.Fail(404, "Product not found! "));
-            }
+            // gerek kalmadı ! . Service katmanında tanımladık
+            //if (deletedProduct == null)
+            //{
+            //    return CreateActionResult(CustomResponseDto<NoContentDto>.Fail(404, "Product not found! "));
+            //}
 
             await _productService.RemoveAsync(deletedProduct);
 

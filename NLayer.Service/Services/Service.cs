@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NLayer.Core.Models;
 using NLayer.Core.Repositories;
 using NLayer.Core.Services;
 using NLayer.Core.UnitOfWorks;
+using NLayer.Service.Exceptions;
 using System.Linq.Expressions;
 
 namespace NLayer.Service.Services
@@ -37,7 +39,14 @@ namespace NLayer.Service.Services
 
         public async Task<T> GetByIdAsync(int id)
         {
-           return await _repository.GetByIdAsync(id);   
+           var entity = await _repository.GetByIdAsync(id);
+
+            if (entity == null)
+            {
+                throw new NotFoundException($"{typeof(T).Name}({id}) not found ! ");
+            }
+
+            return entity;
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
