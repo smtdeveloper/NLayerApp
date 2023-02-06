@@ -30,12 +30,8 @@ namespace NLayer.Caching
             if (!_memoryCache.TryGetValue(CacheProductKey, out _))
             {
                 _memoryCache.Set(CacheProductKey, _productRepository.GetProductsWithCategory().Result);
-
             }
-
         }
-
-
 
         public async Task<Product> AddAsync(Product entity)
         {
@@ -43,7 +39,6 @@ namespace NLayer.Caching
             await _unitOfWork.CommitAsync();
             await CacheAllProductsAsync();
             return entity;
-
         }
 
         public async Task<IEnumerable<Product>> AddRangeAsync(IEnumerable<Product> entities)
