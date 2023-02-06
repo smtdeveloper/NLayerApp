@@ -32,6 +32,8 @@ Migration
 
 Hata yönetimi Global
 
+Caching  
+
 Action Methodlar 
 
 AutoMapper 
