@@ -1,8 +1,11 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NLayer.API.Filters;
 using NLayer.API.Middilewares;
+using NLayer.API.Modeles;
 using NLayer.Core.Repositories;
 using NLayer.Core.Services;
 using NLayer.Core.UnitOfWorks;
@@ -32,20 +35,8 @@ builder.Services.Configure<ApiBehaviorOptions>(opt =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//UnitOfWork
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped(typeof(NotFoundFilter<>));
 
-// Generic
-builder.Services.AddScoped(typeof(IGenericRepository<>) ,typeof(GenericRepository<>));
-builder.Services.AddScoped(typeof(IService<>) ,typeof(Service<>));
-
-//Product
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IProductService, ProductService>();
-
-//Category
-builder.Services.AddScoped<ICategoryRespository, CategoryRepository>();
-builder.Services.AddScoped<ICategroryService, CategoryService>();
 
 
 builder.Services.AddAutoMapper(typeof(ProductProfile), typeof(CategoryProfile), typeof(ProductFeatureProfile));
@@ -61,6 +52,10 @@ builder.Services.AddDbContext<AppDbContext>(x =>
 });
 
 
+builder.Host.UseServiceProviderFactory
+    (new AutofacServiceProviderFactory());
+
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoServiceModele()));
 
 var app = builder.Build();
 

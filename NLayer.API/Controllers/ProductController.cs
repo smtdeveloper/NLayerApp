@@ -44,6 +44,8 @@ namespace NLayer.API.Controllers
 
         }
 
+
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         // www.mysite.com/api/products/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
@@ -65,7 +67,6 @@ namespace NLayer.API.Controllers
             var newDto = _mapper.Map<ProductDto>(product);
 
             return CreateActionResult(CustomResponseDto<ProductDto>.Success(201, newDto));
-
         }
 
         [HttpPut]

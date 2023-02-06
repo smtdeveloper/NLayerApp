@@ -12,7 +12,6 @@ namespace NLayer.Core.DTOs
         public int Stock { get; set; }
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
-        public string Password { get; set; }
     
     }
 }

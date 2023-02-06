@@ -8,7 +8,7 @@ namespace NLayer.API.Filters
     {
         public override void OnActionExecuted(ActionExecutedContext context)
         {
-            if (context.ModelState.IsValid)
+            if (!context.ModelState.IsValid)
             {
                 var errors = context.ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
 
