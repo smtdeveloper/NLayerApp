@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<ProductWithCategoryDto>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Category</th>
+            <th scope="col">CreatedDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row"> @item.Id </th>
+                <th scope="row"> @item.Name </th>
+                <th scope="row"> @item.Price </th>
+                <th scope="row"> @item.Stock </th>
+                <th scope="row"> @item.Category </th>
+                <th scope="row"> @item.CreatedDate </th>
+            </tr>
+        }
+    </tbody>
+</table>
+
