@@ -13,6 +13,8 @@
             <th scope="col">Stock</th>
             <th scope="col">Category</th>
             <th scope="col">CreatedDate</th>
+            <th scope="col">Update</th>
+
         </tr>
     </thead>
     <tbody>
@@ -25,6 +27,8 @@
                 <th scope="row"> @item.Stock </th>
                 <th scope="row"> @item.Category.Name </th>
                 <th scope="row"> @item.CreatedDate </th>
+                <th><a class="btn btn-warning" asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">Update</a></th>
+            
             </tr>
         }
     </tbody>
