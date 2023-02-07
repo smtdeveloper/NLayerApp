@@ -10,9 +10,9 @@ namespace NLayer.Repository
         {
 
         }
-        public DbSet<Category> Categories{ get; set; }
-        public DbSet<Product> Products{ get; set; }
-        public DbSet<ProductFeature> ProductFeatures{ get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductFeature> ProductFeatures { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -28,8 +28,8 @@ namespace NLayer.Repository
 
             // örnek Seed Data 
             modelBuilder.Entity<ProductFeature>().HasData(
-                new ProductFeature {Id =1 ,Color = "Kırmızı" ,Height = 100 , Width = 180 ,ProductId = 1 },
-                new ProductFeature {Id =2 ,Color = "Mavi" ,Height = 80 , Width = 120 ,ProductId = 2 }
+                new ProductFeature { Id = 1, Color = "Kırmızı", Height = 100, Width = 180, ProductId = 1 },
+                new ProductFeature { Id = 2, Color = "Mavi", Height = 80, Width = 120, ProductId = 2 }
                 );
 
 

@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using NLayer.Core.DTOs;
-using NLayer.Core.DTOs.GenericDTO;
 using NLayer.Core.Models;
 using NLayer.Core.Repositories;
 using NLayer.Core.Services;

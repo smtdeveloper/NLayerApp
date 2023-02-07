@@ -1,10 +1,10 @@
-using Autofac.Extensions.DependencyInjection;
 using Autofac;
-using NLayer.Web.Modeles;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using NLayer.Repository;
-using System.Reflection;
 using NLayer.Service.Mapping;
+using NLayer.Web.Modeles;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 

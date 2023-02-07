@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
 using NLayer.Core.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NLayer.Service.Validations
 {
@@ -15,7 +10,7 @@ namespace NLayer.Service.Validations
 
             RuleFor(p => p.Name).NotEmpty().WithMessage("{PropertName} is required");
 
-            RuleFor(p => p.CategoryId).InclusiveBetween(1 , int.MaxValue).WithMessage("{{PropertName} CategoryId must be at least 1 !");
+            RuleFor(p => p.CategoryId).InclusiveBetween(1, int.MaxValue).WithMessage("{{PropertName} CategoryId must be at least 1 !");
             RuleFor(p => p.Price).InclusiveBetween(0, int.MaxValue).WithMessage("{PropertName} Price must be at least 0 !");
             RuleFor(p => p.Stock).InclusiveBetween(0, int.MaxValue).WithMessage("{PropertName} stock must be at least 0 !");
 
