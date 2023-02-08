@@ -27,18 +27,20 @@
                 <th scope="row"> @item.Price </th>
                 <th scope="row"> @item.Stock </th>
                 <th scope="row"> @item.Category.Name </th>
-                <th scope="row"> @item.CreatedDate </th>
-                <th>
-                    <a class="btn btn-warning" asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                    @* <a class="btn btn-danger" asp-controller="Product" asp-action="Remove" asp-route-id="@item.Id">Delete</a>*@
-                
-                </th>
-                <td><button class="btn btn-outline-danger" onclick="deleteBlog(@item.Id)">Sil</button></td>
-
+                <th scope="row"> @item.CreatedDate.ToShortDateString() </th>
+                <th> <a class="btn btn-warning" asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">Update</a></th>
+                <td>  <button class="btn btn-outline-danger" onclick="deleteBlog(@item.Id)">Sil</button> </td>
             </tr>
         }
     </tbody>
 </table>
+
+<br/>
+
+@*<a href="Product/Save" class="btn btn-success" > Yeni ürün ekle </a>*@
+
+<a class="btn btn-success" asp-controller="Product" asp-action="Save" > Yeni ürün ekle</a>
+
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
