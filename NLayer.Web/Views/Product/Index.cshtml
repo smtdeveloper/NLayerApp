@@ -8,13 +8,16 @@
     <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Image</th>
             <th scope="col">Name</th>
+            <th scope="col">Declaration</th>
             <th scope="col">Price</th>
             <th scope="col">Stock</th>
             <th scope="col">Category</th>
             <th scope="col">CreatedDate</th>
+            <th scope="col">UpdatedDate</th>
             <th scope="col">Actions</th>
-            <th scope="col"></th>   
+            <th scope="col"> IsDelete </th>   
 
         </tr>
     </thead>
@@ -23,13 +26,19 @@
         {
             <tr>
                 <th scope="row"> @item.Id </th>
+                <th scope="row"> @item.Image </th>
                 <th scope="row"> @item.Name </th>
+                <th scope="row"> @item.Declaration </th>
                 <th scope="row"> @item.Price </th>
                 <th scope="row"> @item.Stock </th>
                 <th scope="row"> @item.Category.Name </th>
-                <th scope="row"> @item.CreatedDate.ToShortDateString() </th>
-                <th> <a class="btn btn-warning" asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">Update</a></th>
-                <td>  <button class="btn btn-outline-danger" onclick="deleteBlog(@item.Id)">Sil</button> </td>
+                <th scope="row"> @item.CreatedDate </th>
+                <th scope="row"> @item.UpdatedDate </th>
+                <th> 
+                    <a class="btn btn-warning" asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                    <button class="btn btn-outline-danger" onclick="deleteBlog(@item.Id)">Sil</button>
+                </th>
+                <th scope="row"> @item.IsDelete </th>
             </tr>
         }
     </tbody>
