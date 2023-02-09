@@ -9,7 +9,7 @@ namespace NLayer.Service.Mapping
         public CategoryProfile()
         {
             CreateMap<Category, CategoryDto>().ReverseMap();
-            CreateMap<Category, CategoryWithProductsDto>();
+            CreateMap<Category, CategoryWithProductsDto>().ReverseMap();
         }
     }
 }
