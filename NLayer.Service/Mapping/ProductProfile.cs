@@ -10,7 +10,9 @@ namespace NLayer.Service.Mapping
         {
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<ProductUpdateDto, Product>();
-            CreateMap<Product, ProductWithCategoryDto>().ForMember(x => x.CreatedDate, mopt =>  mopt.MapFrom( y => y.CreateDate));
+            
+            //CreateMap<Product, ProductWithCategoryDto>().ForMember(x => x.CreatedDate, mopt =>  mopt.MapFrom( y => y.CreateDate));
+            CreateMap<Product, ProductWithCategoryDto>();
 
         }
     }
