@@ -39,9 +39,6 @@ builder.Services.AddMemoryCache();
 
 
 builder.Services.AddScoped(typeof(NotFoundFilter<>));
-
-
-
 builder.Services.AddAutoMapper(typeof(ProductProfile), typeof(CategoryProfile), typeof(ProductFeatureProfile));
 
 

@@ -82,6 +82,7 @@ namespace NLayer.Caching
 
             return Task.FromResult(CustomResponseDto<List<ProductWithCategoryDto>>.Success(200, productWithCategory));
 
+
         }
 
         public async Task RemoveAsync(Product entity)
