@@ -47,6 +47,7 @@ namespace NLayer.Repository
                         case EntityState.Added:
                             {
                                 entityReference.CreatedDate = DateTime.Now;
+                                entityReference.IsDelete = false;
                                 break;
                             }
                         case EntityState.Modified:
@@ -71,6 +72,7 @@ namespace NLayer.Repository
                         case EntityState.Added:
                             {
                                 entityReference.CreatedDate = DateTime.Now;
+                                entityReference.IsDelete= false;
                                 break;
                             }
                         case EntityState.Modified:
