@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using NLayer.Core.DTOs;
+using NLayer.Core.DTOs.GenericDTO;
 using NLayer.Core.Models;
 using NLayer.Core.Repositories;
 using NLayer.Core.Services;
@@ -74,12 +75,13 @@ namespace NLayer.Caching
 
         }
 
-        public Task<List<ProductWithCategoryDto>> GetProductsWithCategory()
+        public Task<CustomResponseDto<List<ProductWithCategoryDto>>> GetProductsWithCategory()
         {
             var products = _memoryCache.Get<IEnumerable<Product>>(CacheProductKey);
             var productWithCategory = _mapper.Map<List<ProductWithCategoryDto>>(products);
 
-            return Task.FromResult(productWithCategory);
+            return Task.FromResult(CustomResponseDto<List<ProductWithCategoryDto>>.Success(200, productWithCategory));
+
 
         }
 

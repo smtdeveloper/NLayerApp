@@ -8,7 +8,6 @@ namespace NLayer.Web.Filters
 {
     public class NotFoundFilter<T> : IAsyncActionFilter where T : BaseEntity
     {
-
         private readonly IService<T> _service;
 
         public NotFoundFilter(IService<T> service)

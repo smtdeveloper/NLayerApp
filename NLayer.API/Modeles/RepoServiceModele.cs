@@ -36,9 +36,10 @@ namespace NLayer.API.Modeles
             //InstancePerDependency = transient
             // InstancePerLifetimeScope = Scope 
 
-            builder.RegisterType<ProductServiceWithCaching>().As<IProductService>();
+            //Caching
+            // builder.RegisterType<ProductServiceWithCaching>().As<IProductService>();
 
-           
+
 
         }
     }
