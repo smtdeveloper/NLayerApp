@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Save Category";
+}
+@model CategoryDto
+<h1>Save Category</h1>
+
+<div class="row">
+
+    <div class=col-md-8>
+
+        <form asp-action="Save" method="post" asp-controller="Category">
+
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <input type="submit" value="Save" class="btn-primary" />
+
+
+       
+        </form>
+
+    </div>
+
+
+</div>
